@@ -6,7 +6,7 @@
 # to learn more about Dockerfiles.
 #
 # This file is hosted on GitHub. Therefore you can start it in docker like this:
-# > docker build -t githubissuemover github.com/nicolasgarnier/github-issue-mover
+# > docker build -t githubissuemover github.com/nmccready/github-issue-mover
 # > docker run -p 80:8080 -d githubissuemover
 
 FROM google/dart-runtime

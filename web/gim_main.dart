@@ -272,20 +272,20 @@ void copyIssue() {
             // Adding closing comment to the original issue.
             GitHubUrl newIssueUrl = GitHubUrl.parse(newIssue.htmlUrl);
             String commentBody =
-                "This issue was moved to ${newIssueUrl.simplifiedUrl}";
+                "This issue was copied to ${newIssueUrl.simplifiedUrl}";
             RepositorySlug originalRepoSlug = new RepositorySlug(
                 originalIssueUrl.ownerName, originalIssueUrl.repoName);
             gitHub.issues.createComment(originalRepoSlug,
                 issueToMove.number, commentBody).then((_) {
-                    markClosingCommentCreationCompleted();
-                    IssueRequest request = new IssueRequest();
-                    request.state = "closed";
-                    gitHub.issues.edit(originalRepoSlug, issueToMove.number,
-                        request).then((_) {
-                          markOriginalIssueClosedCompleted();
-                          moveFocusToCloseButton();
-                    }).catchError((error) => displayMoveError(
-                        "Error closing original issue: $error"));
+                    // markClosingCommentCreationCompleted();
+                    // IssueRequest request = new IssueRequest();
+                    // request.state = "closed";
+                    // gitHub.issues.edit(originalRepoSlug, issueToMove.number,
+                    //     request).then((_) {
+                    //       markOriginalIssueClosedCompleted();
+                    //       moveFocusToCloseButton();
+                    // }).catchError((error) => displayMoveError(
+                    //     "Error closing original issue: $error"));
             }).catchError((error) => displayMoveError(
                 "Error adding closing comment to original issue: $error"));
       }).catchError((error) => displayMoveError(
@@ -295,4 +295,3 @@ void copyIssue() {
   }).catchError((error) => displayMoveError(
       "Error creating new issue: $error"));
 }
-
